@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../widgets/category_widget.dart';
 import '../widgets/header_widget.dart';
+import '../widgets/weathercard_widget.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,7 +16,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     const bg = Color(0xFFF5F5F5);
-    const text = Color(0xFF111111);
 
     return SafeArea(
       child: Scaffold(
@@ -24,20 +25,16 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0,
           scrolledUnderElevation: 0,
           bottom: const PreferredSize(
-            preferredSize: Size.fromHeight(100.0),
-            child: Column(
-              children: [
-                HeaderWidget(),
-                CategorySliderWidget(),
-              ],
-            ),
+            preferredSize: Size.fromHeight(80.0),
+            child: HeaderWidget(),
           ),
         ),
-        body: Center(
-          child: Text(
-            'ALL Content', // Placeholder, update as needed
-            style: const TextStyle(color: text),
-          ),
+        body: Column(
+          children: [
+            const CategorySliderWidget(),
+            const SizedBox(height: 16.0),
+            const WeatherCardWidget(),
+          ],
         ),
       ),
     );
