@@ -1,36 +1,42 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+import '../widgets/category_widget.dart';
+import '../widgets/header_widget.dart';
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     const bg = Color(0xFFF5F5F5);
     const text = Color(0xFF111111);
 
-    return Scaffold(
-      backgroundColor: bg,
-      appBar: AppBar(
+    return SafeArea(
+      child: Scaffold(
         backgroundColor: bg,
-        elevation: 0,
-        scrolledUnderElevation: 0,
-        title: const Text(
-          'Agro Monitoring',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 20,
-            color: text,
+        appBar: AppBar(
+          backgroundColor: bg,
+          elevation: 0,
+          scrolledUnderElevation: 0,
+          bottom: const PreferredSize(
+            preferredSize: Size.fromHeight(100.0),
+            child: Column(
+              children: [
+                HeaderWidget(),
+                CategorySliderWidget(),
+              ],
+            ),
           ),
         ),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'Welcome to AgriApp 🌾',
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 16,
-            color: text,
+        body: Center(
+          child: Text(
+            'ALL Content', // Placeholder, update as needed
+            style: const TextStyle(color: text),
           ),
         ),
       ),
