@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/category_widget.dart';
 import '../widgets/header_widget.dart';
+import '../widgets/smartscore_widget.dart';
 import '../widgets/weathercard_widget.dart';
 
 
@@ -25,15 +26,18 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0,
           scrolledUnderElevation: 0,
           bottom: const PreferredSize(
-            preferredSize: Size.fromHeight(80.0),
+            preferredSize: Size.fromHeight(40.0),
             child: HeaderWidget(),
           ),
         ),
         body: Column(
           children: [
+            const SizedBox(height: 20.0),
             const CategorySliderWidget(),
             const SizedBox(height: 16.0),
             const WeatherCardWidget(),
+            const SizedBox(height: 16.0),
+            const SmartScoreSection()
           ],
         ),
       ),

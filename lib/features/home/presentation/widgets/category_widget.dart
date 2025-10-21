@@ -19,7 +19,7 @@ class _CategorySliderWidgetState extends State<CategorySliderWidget> {
 
     return Container(
       color: bg,
-      padding: const EdgeInsets.only(left: 16.0, top: 8.0, bottom: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SizedBox(
         height: 40,
         child: ListView.builder(
