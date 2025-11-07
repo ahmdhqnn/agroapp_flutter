@@ -9,7 +9,15 @@ class CategorySliderWidget extends StatefulWidget {
 
 class _CategorySliderWidgetState extends State<CategorySliderWidget> {
   int _selectedIndex = 0;
-  final List<String> categories = ['ALL', 'Plant', 'AI Insight', 'Indicator', 'Device', 'Farm'];
+
+  final List<String> categories = [
+    'ALL',
+    'Plant Stats',
+    'AI Insight',
+    'Indicator',
+    'Device',
+    'Farm',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,32 +36,30 @@ class _CategorySliderWidgetState extends State<CategorySliderWidget> {
           padding: EdgeInsets.zero,
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            bool isLastItem = index == categories.length - 1;
+            final isSelected = _selectedIndex == index;
+            final isLast = index == categories.length - 1;
+
             return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              },
+              onTap: () => setState(() => _selectedIndex = index),
               child: Container(
-                width: 88,
+                constraints: const BoxConstraints(minWidth: 72),
                 height: 38,
-                margin: EdgeInsets.only(right: isLastItem ? 0.0 : 8.0),
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                margin: EdgeInsets.only(right: isLast ? 0 : 8),
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                 decoration: BoxDecoration(
-                  color: _selectedIndex == index ? Colors.white : Colors.transparent,
-                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  color: isSelected ? Colors.white : Colors.transparent,
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Center(
                   child: Text(
                     categories[index],
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      color: _selectedIndex == index ? text : inactiveText,
+                      color: isSelected ? text : inactiveText,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 1,
                   ),
                 ),
               ),
