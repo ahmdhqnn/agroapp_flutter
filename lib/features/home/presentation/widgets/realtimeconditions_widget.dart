@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Realtimeconditions extends StatelessWidget {
   const Realtimeconditions({
@@ -62,7 +63,6 @@ class Realtimeconditions extends StatelessWidget {
               ),
             ],
           ),
-
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -81,7 +81,7 @@ class Realtimeconditions extends StatelessWidget {
                 style: const TextStyle(
                   fontFamily: 'Plus Jakarta Sans',
                   fontSize: 12,
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.w400,
                   color: Colors.white,
                 ),
               ),
@@ -162,14 +162,77 @@ class Realtimeconditions extends StatelessWidget {
                 description,
                 style: const TextStyle(
                   fontFamily: 'Plus Jakarta Sans',
-                  fontSize: 12,
-                  fontWeight: FontWeight.w300,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
                   color: Colors.white,
                 ),
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildSensorStatusCard(BuildContext context, double w) {
+    const aspectContent = 350 / 100;
+    final hContent = w / aspectContent;
+    final radiusContent = BorderRadius.circular(18);
+
+    return Container(
+      width: w,
+      height: hContent,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: radiusContent,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Sensor Status',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 22,
+                    fontFamily: 'Plus Jakarta Sans',
+                    fontWeight: FontWeight.w300,
+                    height: 1,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '7/10 Online',
+                  style: TextStyle(
+
+                    fontSize: 12,
+                    fontFamily: 'Plus Jakarta Sans',
+                    fontWeight: FontWeight.w300,
+                    height: 1.83,
+                  ),
+                ),
+              ],
+            ),
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: Text(
+                'Last update 14 Jul 2023 | 14:05:09',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 12,
+                  fontFamily: 'Plus Jakarta Sans',
+                  fontWeight: FontWeight.w400,
+                  height: 1,
+                ),
+              ),
+            ),
+
+          ],
+        ),
       ),
     );
   }
@@ -237,6 +300,8 @@ class Realtimeconditions extends StatelessWidget {
               const Color(0xFF7CCB5B),
             ],
           ),
+          const SizedBox(height: 12),
+          _buildSensorStatusCard(context, w),
         ],
       ),
     );

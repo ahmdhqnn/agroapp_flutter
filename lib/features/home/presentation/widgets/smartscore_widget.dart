@@ -61,7 +61,7 @@ class SmartScoreSection extends StatelessWidget {
             borderRadius: radiusContent,
           ),
           child: Padding(
-            padding: EdgeInsets.all(w * 0.03),
+            padding: EdgeInsets.all(16.0),
             child: Stack(
               children: [
                 Column(
@@ -103,15 +103,6 @@ class SmartScoreSection extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       height: 1,
                     ),
-                  ),
-                ),
-                Positioned(
-                  right: w * 0.03,
-                  top: hContent * 0.03,
-                  child: SvgPicture.asset(
-                    'assets/icons/arrowupright_icon.svg',
-                    width: 36,
-                    height: 36,
                   ),
                 ),
               ],
