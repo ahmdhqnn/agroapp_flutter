@@ -18,30 +18,27 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: bg,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              HeaderWidget(),
-              SizedBox(height: 8),
+    return SafeArea(
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            HeaderWidget(),
+            SizedBox(height: 8),
 
-              CategorySliderWidget(),
-              SizedBox(height: 16),
+            CategorySliderWidget(),
+            SizedBox(height: 16),
 
-              _Centered(child: WeatherCardWidget()),
-              SizedBox(height: 20),
+            _Centered(child: WeatherCardWidget()),
+            SizedBox(height: 20),
 
-              _Centered(child: SmartScoreSection(widthFactor: 0.92)),
-              SizedBox(height: 20),
+            _Centered(child: SmartScoreSection(widthFactor: 0.92)),
+            SizedBox(height: 20),
 
-              _Centered(child: Realtimeconditions(widthFactor: 0.92)),
-              SizedBox(height: 24),
-            ],
-          ),
+            _Centered(child: Realtimeconditions(widthFactor: 0.92)),
+            SizedBox(height: 24),
+          ],
         ),
       ),
     );
@@ -50,13 +47,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class _Centered extends StatelessWidget {
   final Widget child;
-  const _Centered({required this.child, super.key});
+  const _Centered({required this.child});
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: child,
-    );
+    return Align(alignment: Alignment.center, child: child);
   }
 }

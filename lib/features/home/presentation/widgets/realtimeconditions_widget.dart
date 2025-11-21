@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Realtimeconditions extends StatelessWidget {
   const Realtimeconditions({
@@ -12,13 +11,13 @@ class Realtimeconditions extends StatelessWidget {
   final double widthFactor;
 
   Widget _buildInfoCard(
-      BuildContext context, {
-        required String iconAsset,
-        required String title,
-        required String value,
-        required String description,
-        required List<Color> gradientColors,
-      }) {
+    BuildContext context, {
+    required String iconAsset,
+    required String title,
+    required String value,
+    required String description,
+    required List<Color> gradientColors,
+  }) {
     const double cardHeight = 160;
     const double iconBgSize = 40;
 
@@ -47,9 +46,7 @@ class Realtimeconditions extends StatelessWidget {
                   color: Colors.white.withOpacity(0.3),
                   shape: BoxShape.circle,
                 ),
-                child: Image.asset(
-                  iconAsset,
-                ),
+                child: Image.asset(iconAsset),
               ),
               const SizedBox(width: 8),
               Text(
@@ -93,13 +90,13 @@ class Realtimeconditions extends StatelessWidget {
   }
 
   Widget _buildLargeInfoCard(
-      BuildContext context, {
-        required String iconAsset,
-        required String title,
-        required String value,
-        required String description,
-        required List<Color> gradientColors,
-      }) {
+    BuildContext context, {
+    required String iconAsset,
+    required String title,
+    required String value,
+    required String description,
+    required List<Color> gradientColors,
+  }) {
     const double cardHeight = 150;
     const double iconBgSize = 40;
 
@@ -129,9 +126,7 @@ class Realtimeconditions extends StatelessWidget {
                   color: Colors.white.withOpacity(0.3),
                   shape: BoxShape.circle,
                 ),
-                child: Image.asset(
-                  iconAsset,
-                ),
+                child: Image.asset(iconAsset),
               ),
               const SizedBox(width: 8),
               Text(
@@ -207,7 +202,6 @@ class Realtimeconditions extends StatelessWidget {
                 Text(
                   '7/10 Online',
                   style: TextStyle(
-
                     fontSize: 12,
                     fontFamily: 'Plus Jakarta Sans',
                     fontWeight: FontWeight.w300,
@@ -230,7 +224,6 @@ class Realtimeconditions extends StatelessWidget {
                 ),
               ),
             ),
-
           ],
         ),
       ),
@@ -295,10 +288,7 @@ class Realtimeconditions extends StatelessWidget {
             title: 'Soil Temperature',
             value: '12°C',
             description: 'Terlalu dingin, dengan suhu normal 15°C - 30°C.',
-            gradientColors: [
-              const Color(0xFFAADF7F),
-              const Color(0xFF7CCB5B),
-            ],
+            gradientColors: [const Color(0xFFAADF7F), const Color(0xFF7CCB5B)],
           ),
           const SizedBox(height: 12),
           _buildSensorStatusCard(context, w),

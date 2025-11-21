@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SmartScoreSection extends StatelessWidget {
   const SmartScoreSection({
@@ -45,10 +44,7 @@ class SmartScoreSection extends StatelessWidget {
             gradient: const LinearGradient(
               begin: Alignment(0.50, -0.00),
               end: Alignment(0.50, 1.00),
-              colors: [
-                Color(0xFFE1F3E2),
-                Color(0xFFFDDEC5),
-              ],
+              colors: [Color(0xFFE1F3E2), Color(0xFFFDDEC5)],
             ),
           ),
         ),
