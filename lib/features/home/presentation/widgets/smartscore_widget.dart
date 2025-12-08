@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:agroappflutter/features/home/presentation/screens/plant_overview_screen.dart';
 
 class SmartScoreSection extends StatelessWidget {
   const SmartScoreSection({
@@ -98,6 +100,30 @@ class SmartScoreSection extends StatelessWidget {
                       fontFamily: 'Plus Jakarta Sans',
                       fontWeight: FontWeight.w500,
                       height: 1,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: -8,
+                  right: -8,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const PlantsOverviewScreen(),
+                        ),
+                      );
+                    },
+                    child: SizedBox(
+                      width: 36,
+                      height: 36,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: SvgPicture.asset(
+                          'assets/icons/arrowupright_icon.svg',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 ),

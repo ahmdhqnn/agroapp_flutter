@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WeatherCardWidget extends StatelessWidget {
-  const WeatherCardWidget({super.key});
+  const WeatherCardWidget({super.key, this.widthFactor = 0.92});
+
+  final double widthFactor;
 
   @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
     final hour = now.hour;
     final screenWidth = MediaQuery.of(context).size.width;
-    final cardWidth = screenWidth * 0.9;
+    final cardWidth = screenWidth * widthFactor;
     final cardHeight = cardWidth * 0.261;
 
-    bool isDayTime = hour >= 6 && hour < 18;
+    final isDayTime = hour >= 6 && hour < 18;
 
     return isDayTime
         ? _buildDayWeatherCard(cardWidth, cardHeight)
@@ -34,10 +36,10 @@ class WeatherCardWidget extends StatelessWidget {
                 width: cardWidth,
                 height: cardHeight,
                 decoration: ShapeDecoration(
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     begin: Alignment(0.01, 0.49),
                     end: Alignment(0.99, 0.51),
-                    colors: [const Color(0xFF00D2FF), const Color(0xFF3A7BD5)],
+                    colors: [Color(0xFF00D2FF), Color(0xFF3A7BD5)],
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(cardHeight * 0.198),
@@ -49,9 +51,9 @@ class WeatherCardWidget extends StatelessWidget {
           Positioned(
             left: cardWidth * 0.029,
             top: cardHeight * 0.209,
-            child: Text(
+            child: const Text(
               'Monday, 20 October',
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontSize: 12,
                 fontFamily: 'Plus Jakarta Sans',
@@ -65,14 +67,15 @@ class WeatherCardWidget extends StatelessWidget {
             top: cardHeight * 0.055,
             child: Row(
               mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SvgPicture.asset(
                   'assets/icons/location_icon.svg',
                   width: cardWidth * 0.034,
                   height: cardWidth * 0.034,
-                  colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                  colorFilter: const ColorFilter.mode(
+                    Colors.white,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 const SizedBox(width: 2),
                 const Text(
@@ -91,9 +94,9 @@ class WeatherCardWidget extends StatelessWidget {
           Positioned(
             left: cardWidth * 0.845,
             top: cardHeight * 0.725,
-            child: Text(
+            child: const Text(
               '28°C',
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontFamily: 'Plus Jakarta Sans',
@@ -109,9 +112,13 @@ class WeatherCardWidget extends StatelessWidget {
               'assets/icons/day_icon.svg',
               width: cardWidth * 0.052,
               height: cardWidth * 0.052,
-              colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(
+                Colors.white,
+                BlendMode.srcIn,
+              ),
             ),
           ),
+
           Positioned(
             left: cardWidth * 0.654,
             top: -cardHeight * 0.638,
@@ -121,6 +128,7 @@ class WeatherCardWidget extends StatelessWidget {
                 width: cardWidth * 0.332,
                 height: cardWidth * 0.332,
                 decoration: ShapeDecoration(
+                  color: Colors.white.withOpacity(0.49),
                   shape: const OvalBorder(),
                 ),
               ),
@@ -135,6 +143,7 @@ class WeatherCardWidget extends StatelessWidget {
                 width: cardWidth * 0.261,
                 height: cardWidth * 0.261,
                 decoration: ShapeDecoration(
+                  color: Colors.white.withOpacity(0.30),
                   shape: const OvalBorder(),
                 ),
               ),
@@ -172,10 +181,10 @@ class WeatherCardWidget extends StatelessWidget {
                 width: cardWidth,
                 height: cardHeight,
                 decoration: ShapeDecoration(
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     begin: Alignment(0.01, 0.49),
                     end: Alignment(0.99, 0.51),
-                    colors: [const Color(0xFF536976), const Color(0xFF292E49)],
+                    colors: [Color(0xFF536976), Color(0xFF292E49)],
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(cardHeight * 0.198),
@@ -187,9 +196,9 @@ class WeatherCardWidget extends StatelessWidget {
           Positioned(
             left: cardWidth * 0.029,
             top: cardHeight * 0.209,
-            child: Text(
+            child: const Text(
               'Monday, 20 October',
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontSize: 12,
                 fontFamily: 'Plus Jakarta Sans',
@@ -203,14 +212,15 @@ class WeatherCardWidget extends StatelessWidget {
             top: cardHeight * 0.055,
             child: Row(
               mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SvgPicture.asset(
                   'assets/icons/location_icon.svg',
                   width: cardWidth * 0.034,
                   height: cardWidth * 0.034,
-                  colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                  colorFilter: const ColorFilter.mode(
+                    Colors.white,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 const SizedBox(width: 2),
                 const Text(
@@ -229,9 +239,9 @@ class WeatherCardWidget extends StatelessWidget {
           Positioned(
             left: cardWidth * 0.845,
             top: cardHeight * 0.725,
-            child: Text(
+            child: const Text(
               '28°C',
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontFamily: 'Plus Jakarta Sans',
@@ -247,7 +257,10 @@ class WeatherCardWidget extends StatelessWidget {
               'assets/icons/night_icon.svg',
               width: cardWidth * 0.052,
               height: cardWidth * 0.052,
-              colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(
+                Colors.white,
+                BlendMode.srcIn,
+              ),
             ),
           ),
           Positioned(
@@ -258,9 +271,9 @@ class WeatherCardWidget extends StatelessWidget {
               child: Container(
                 width: cardWidth * 0.049,
                 height: cardWidth * 0.049,
-                decoration: ShapeDecoration(
-                  color: const Color(0xFF435365),
-                  shape: const OvalBorder(),
+                decoration: const ShapeDecoration(
+                  color: Color(0xFF435365),
+                  shape: OvalBorder(),
                 ),
               ),
             ),
@@ -273,9 +286,9 @@ class WeatherCardWidget extends StatelessWidget {
               child: Container(
                 width: cardWidth * 0.023,
                 height: cardHeight * 0.099,
-                decoration: ShapeDecoration(
-                  color: const Color(0x752B314B),
-                  shape: const OvalBorder(),
+                decoration: const ShapeDecoration(
+                  color: Color(0x752B314B),
+                  shape: OvalBorder(),
                 ),
               ),
             ),
@@ -288,9 +301,9 @@ class WeatherCardWidget extends StatelessWidget {
               child: Container(
                 width: cardWidth * 0.026,
                 height: cardHeight * 0.088,
-                decoration: ShapeDecoration(
-                  color: const Color(0x752B314B),
-                  shape: const OvalBorder(),
+                decoration: const ShapeDecoration(
+                  color: Color(0x752B314B),
+                  shape: OvalBorder(),
                 ),
               ),
             ),
@@ -303,9 +316,9 @@ class WeatherCardWidget extends StatelessWidget {
               child: Container(
                 width: cardWidth * 0.026,
                 height: cardHeight * 0.088,
-                decoration: ShapeDecoration(
-                  color: const Color(0x752B314B),
-                  shape: const OvalBorder(),
+                decoration: const ShapeDecoration(
+                  color: Color(0x752B314B),
+                  shape: OvalBorder(),
                 ),
               ),
             ),
@@ -318,9 +331,9 @@ class WeatherCardWidget extends StatelessWidget {
               child: Container(
                 width: cardWidth * 0.032,
                 height: cardWidth * 0.032,
-                decoration: ShapeDecoration(
-                  color: const Color(0x992D344D),
-                  shape: const OvalBorder(),
+                decoration: const ShapeDecoration(
+                  color: Color(0x992D344D),
+                  shape: OvalBorder(),
                 ),
               ),
             ),
