@@ -11,7 +11,7 @@ class _CategorySliderWidgetState extends State<CategorySliderWidget> {
   int _selectedIndex = 0;
 
   final List<String> categories = [
-    'ALL',
+    'All',
     'Plant Stats',
     'AI Insight',
     'Indicator',
@@ -45,7 +45,10 @@ class _CategorySliderWidgetState extends State<CategorySliderWidget> {
                 constraints: const BoxConstraints(minWidth: 72),
                 height: 38,
                 margin: EdgeInsets.only(right: isLast ? 0 : 8),
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: isSelected ? Colors.white : Colors.transparent,
                   borderRadius: BorderRadius.circular(20),
