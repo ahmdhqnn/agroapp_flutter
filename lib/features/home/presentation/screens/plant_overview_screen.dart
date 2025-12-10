@@ -6,7 +6,7 @@ class PlantsOverviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const bg = Color(0xFFF5F5F5); // samakan dengan HomeScreen
+    const bg = Color(0xFFF5F5F5);
     const widthFactor = 0.92;
 
     final screenWidth = MediaQuery.of(context).size.width;
@@ -21,8 +21,6 @@ class PlantsOverviewScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 16),
-
-              // TOP BAR (pakai lebar contentWidth & di-center)
               Align(
                 alignment: Alignment.center,
                 child: SizedBox(
@@ -45,7 +43,6 @@ class PlantsOverviewScreen extends StatelessWidget {
 
               const SizedBox(height: 24),
 
-              // TITLE
               Align(
                 alignment: Alignment.center,
                 child: SizedBox(
@@ -65,7 +62,6 @@ class PlantsOverviewScreen extends StatelessWidget {
 
               const SizedBox(height: 24),
 
-              // IMAGE TANAMAN (masih di dalam lebar yang sama)
               Align(
                 alignment: Alignment.center,
                 child: SizedBox(
@@ -81,9 +77,8 @@ class PlantsOverviewScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
 
-              // CARD DETAIL (lebar = contentWidth, sama seperti card di home)
               Align(
                 alignment: Alignment.center,
                 child: SizedBox(
@@ -174,6 +169,38 @@ class PlantsOverviewScreen extends StatelessWidget {
                 ),
               ),
 
+              const SizedBox(height: 12),
+
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: contentWidth,
+                  child: _AIInsightCard(
+                    cautionText:
+                        'Soil temperature is above normal limits, check land conditions.',
+                    growthPhaseText:
+                        'The plant is in the vegetative phase with an estimated duration of the phase of 14-20 days.',
+                    landConditionsText:
+                        'Low soil moisture, needs watering in the next 2 hours.',
+                    estimateText:
+                        'Estimated harvest time is approximately 65 days away.',
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: contentWidth,
+                  child: RecommendationCard(
+                    text:
+                        'Beri pupuk P & K, kurangi N berlebihan.\nAir dijaga macak-macak (2–3 cm).\nCek hama & penyakit blas.\nBersihkan gulma.',
+                  ),
+                ),
+              ),
+
               const SizedBox(height: 24),
             ],
           ),
@@ -242,6 +269,227 @@ class _DetailRow extends StatelessWidget {
         Text(label, style: labelStyle),
         Text(value, style: valueStyle),
       ],
+    );
+  }
+}
+
+class _AIInsightCard extends StatelessWidget {
+  final String cautionText;
+  final String growthPhaseText;
+  final String landConditionsText;
+  final String estimateText;
+
+  const _AIInsightCard({
+    required this.cautionText,
+    required this.growthPhaseText,
+    required this.landConditionsText,
+    required this.estimateText,
+  });
+
+  TextStyle get _titleStyle => const TextStyle(
+    color: Colors.black,
+    fontSize: 12,
+    fontFamily: 'Plus Jakarta Sans',
+    fontWeight: FontWeight.w500,
+    height: 1.83,
+  );
+
+  TextStyle get _descStyle => const TextStyle(
+    color: Colors.black,
+    fontSize: 12,
+    fontFamily: 'Plus Jakarta Sans',
+    fontWeight: FontWeight.w300,
+    height: 1.83,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color(0xFFFBE588),
+        borderRadius: BorderRadius.circular(18),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'AI Insight',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 22,
+              fontFamily: 'Plus Jakarta Sans',
+              fontWeight: FontWeight.w300,
+              height: 1,
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          _InsightRow(
+            iconPath: 'assets/icons/caution_icon.png',
+            title: 'Caution',
+            description: cautionText,
+            titleStyle: _titleStyle,
+            descStyle: _descStyle,
+          ),
+          const SizedBox(height: 8),
+          Divider(color: Colors.black12, height: 1),
+          const SizedBox(height: 8),
+
+          _InsightRow(
+            iconPath: 'assets/icons/growthphase_icon.png',
+            title: 'Growth Phase',
+            description: growthPhaseText,
+            titleStyle: _titleStyle,
+            descStyle: _descStyle,
+          ),
+          const SizedBox(height: 8),
+          Divider(color: Colors.black12, height: 1),
+          const SizedBox(height: 8),
+
+          _InsightRow(
+            iconPath: 'assets/icons/landcontions_icon.png',
+            title: 'Land Conditions',
+            description: landConditionsText,
+            titleStyle: _titleStyle,
+            descStyle: _descStyle,
+          ),
+          const SizedBox(height: 8),
+          Divider(color: Colors.black12, height: 1),
+          const SizedBox(height: 8),
+
+          _InsightRow(
+            iconPath: 'assets/icons/estimate_icon.png',
+            title: 'Estimate',
+            description: estimateText,
+            titleStyle: _titleStyle,
+            descStyle: _descStyle,
+          ),
+
+          const SizedBox(height: 4),
+        ],
+      ),
+    );
+  }
+}
+
+class _InsightRow extends StatelessWidget {
+  final String iconPath;
+  final String title;
+  final String description;
+  final TextStyle titleStyle;
+  final TextStyle descStyle;
+
+  const _InsightRow({
+    required this.iconPath,
+    required this.title,
+    required this.description,
+    required this.titleStyle,
+    required this.descStyle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: 20,
+          height: 20,
+          margin: const EdgeInsets.only(right: 8, top: 2),
+          child: Image.asset(iconPath, fit: BoxFit.contain),
+        ),
+
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title, style: titleStyle),
+              // const SizedBox(height: 1),
+              Text(description, style: descStyle),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class RecommendationCard extends StatelessWidget {
+  final String text;
+
+  const RecommendationCard({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+      ),
+      child: Stack(
+        children: [
+          // CONTENT COLUMN
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Recomendation',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 22,
+                  fontFamily: 'Plus Jakarta Sans',
+                  fontWeight: FontWeight.w300,
+                  height: 1,
+                ),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                text,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontFamily: 'Plus Jakarta Sans',
+                  fontWeight: FontWeight.w300,
+                  height: 1.57,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  width: 24,
+                  height: 24,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFCBCBC),
+                    borderRadius: BorderRadius.circular(100),
+                    border: Border.all(width: 1, color: Colors.black12),
+                  ),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      'assets/icons/info_icon.svg',
+                      width: 24,
+                      height: 24,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          // ARROW ICON (TOP RIGHT)
+          Positioned(
+            right: -8,
+            top: -8,
+            child: SvgPicture.asset(
+              'assets/icons/arrowupright_icon.svg',
+              width: 36,
+              height: 36,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
