@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:agroappflutter/features/home/presentation/screens/data_history_screen.dart';
 
 class Realtimeconditions extends StatelessWidget {
   const Realtimeconditions({
@@ -230,6 +232,108 @@ class Realtimeconditions extends StatelessWidget {
     );
   }
 
+  Widget _buildDataHistoryCard(BuildContext context, double w) {
+    final cardHeight = w * (220 / 350);
+    final radiusContent = BorderRadius.circular(18);
+
+    return Container(
+      width: w,
+      height: cardHeight,
+      decoration: BoxDecoration(
+        color: const Color(0xFFC6CCFD),
+        borderRadius: radiusContent,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  'Data History',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 22,
+                    fontFamily: 'Plus Jakarta Sans',
+                    fontWeight: FontWeight.w300,
+                    height: 1,
+                  ),
+                ),
+                SizedBox(height: 6),
+                Text(
+                  'Daily Data',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
+                    fontFamily: 'Plus Jakarta Sans',
+                    fontWeight: FontWeight.w300,
+                    height: 1.83,
+                  ),
+                ),
+                SizedBox(height: 12),
+
+                _HistoryRow(
+                  date: 'Mon, 20 Jan',
+                  tmp: 'tmp : 25°c',
+                  hum: 'hum :87.4%',
+                  rh: 'rh :55.4%',
+                ),
+                SizedBox(height: 12),
+
+                _HistoryRow(
+                  date: 'Tue, 21 Jan',
+                  tmp: 'tmp : 25°c',
+                  hum: 'hum :87.4%',
+                  rh: 'rh :55.4%',
+                ),
+              ],
+            ),
+
+            Positioned(
+              top: -8,
+              right: -8,
+              child: GestureDetector(
+                onTap: () {
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (_) => const DataHistoryScreen()),
+                  // );
+                },
+                child: SizedBox(
+                  width: 36,
+                  height: 36,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(100),
+                    child: SvgPicture.asset(
+                      'assets/icons/arrowupright_icon.svg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: Text(
+                'Januari 2025',
+                style: TextStyle(
+                  color: Colors.grey[800],
+                  fontSize: 12,
+                  fontFamily: 'Plus Jakarta Sans',
+                  fontWeight: FontWeight.w300,
+                  height: 1,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width * widthFactor;
@@ -292,8 +396,60 @@ class Realtimeconditions extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           _buildSensorStatusCard(context, w),
+          const SizedBox(height: 12),
+
+          _buildDataHistoryCard(context, w),
         ],
       ),
+    );
+  }
+}
+
+class _HistoryRow extends StatelessWidget {
+  final String date;
+  final String tmp;
+  final String hum;
+  final String rh;
+
+  const _HistoryRow({
+    required this.date,
+    required this.tmp,
+    required this.hum,
+    required this.rh,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const dateStyle = TextStyle(
+      color: Colors.black,
+      fontSize: 12,
+      fontFamily: 'Plus Jakarta Sans',
+      fontWeight: FontWeight.w500,
+      height: 1.83,
+    );
+    const valStyle = TextStyle(
+      color: Colors.black,
+      fontSize: 12,
+      fontFamily: 'Plus Jakarta Sans',
+      fontWeight: FontWeight.w300,
+      height: 1.83,
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(date, style: dateStyle),
+        const SizedBox(height: 2),
+        Row(
+          children: [
+            Text(tmp, style: valStyle),
+            const SizedBox(width: 12),
+            Text(hum, style: valStyle),
+            const SizedBox(width: 12),
+            Text(rh, style: valStyle),
+          ],
+        ),
+      ],
     );
   }
 }
