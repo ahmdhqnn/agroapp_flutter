@@ -1,338 +1,20 @@
+import 'package:agroappflutter/features/home/presentation/widgets/history_and_status_sensor_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:agroappflutter/features/home/presentation/screens/data_history_screen.dart';
+import 'info_cards_widget.dart';
 
 class Realtimeconditions extends StatelessWidget {
   const Realtimeconditions({
     super.key,
     this.title = "Realtime Conditions",
     this.widthFactor = 0.9,
+    this.showExtraSection = true,
+    this.showTitle = true,
   });
 
   final String title;
   final double widthFactor;
-
-  Widget _buildInfoCard(
-    BuildContext context, {
-    required String iconAsset,
-    required String title,
-    required String value,
-    required String description,
-    required List<Color> gradientColors,
-  }) {
-    const double cardHeight = 160;
-    const double iconBgSize = 40;
-
-    return Container(
-      height: cardHeight,
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
-          colors: gradientColors,
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Container(
-                width: iconBgSize,
-                height: iconBgSize,
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.3),
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(iconAsset),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontFamily: 'Plus Jakarta Sans',
-                  fontSize: 22,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                value,
-                style: const TextStyle(
-                  fontFamily: 'Plus Jakarta Sans',
-                  fontSize: 28,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                  height: 1.2,
-                ),
-              ),
-              Text(
-                description,
-                style: const TextStyle(
-                  fontFamily: 'Plus Jakarta Sans',
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildLargeInfoCard(
-    BuildContext context, {
-    required String iconAsset,
-    required String title,
-    required String value,
-    required String description,
-    required List<Color> gradientColors,
-  }) {
-    const double cardHeight = 150;
-    const double iconBgSize = 40;
-
-    return Container(
-      height: cardHeight,
-      width: double.infinity,
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
-          colors: gradientColors,
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Container(
-                width: iconBgSize,
-                height: iconBgSize,
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.3),
-                  shape: BoxShape.circle,
-                ),
-                child: Image.asset(iconAsset),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontFamily: 'Plus Jakarta Sans',
-                  fontSize: 22,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                value,
-                style: const TextStyle(
-                  fontFamily: 'Plus Jakarta Sans',
-                  fontSize: 28,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                  height: 1.2,
-                ),
-              ),
-              Text(
-                description,
-                style: const TextStyle(
-                  fontFamily: 'Plus Jakarta Sans',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSensorStatusCard(BuildContext context, double w) {
-    const aspectContent = 350 / 100;
-    final hContent = w / aspectContent;
-    final radiusContent = BorderRadius.circular(18);
-
-    return Container(
-      width: w,
-      height: hContent,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: radiusContent,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Stack(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Sensor Status',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 22,
-                    fontFamily: 'Plus Jakarta Sans',
-                    fontWeight: FontWeight.w300,
-                    height: 1,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  '7/10 Online',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontFamily: 'Plus Jakarta Sans',
-                    fontWeight: FontWeight.w300,
-                    height: 1.83,
-                  ),
-                ),
-              ],
-            ),
-            Positioned(
-              right: 0,
-              bottom: 0,
-              child: Text(
-                'Last update 14 Jul 2023 | 14:05:09',
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 12,
-                  fontFamily: 'Plus Jakarta Sans',
-                  fontWeight: FontWeight.w400,
-                  height: 1,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildDataHistoryCard(BuildContext context, double w) {
-    final cardHeight = w * (220 / 350);
-    final radiusContent = BorderRadius.circular(18);
-
-    return Container(
-      width: w,
-      height: cardHeight,
-      decoration: BoxDecoration(
-        color: const Color(0xFFC6CCFD),
-        borderRadius: radiusContent,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Stack(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  'Data History',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 22,
-                    fontFamily: 'Plus Jakarta Sans',
-                    fontWeight: FontWeight.w300,
-                    height: 1,
-                  ),
-                ),
-                SizedBox(height: 6),
-                Text(
-                  'Daily Data',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontFamily: 'Plus Jakarta Sans',
-                    fontWeight: FontWeight.w300,
-                    height: 1.83,
-                  ),
-                ),
-                SizedBox(height: 12),
-
-                _HistoryRow(
-                  date: 'Mon, 20 Jan',
-                  tmp: 'tmp : 25°c',
-                  hum: 'hum :87.4%',
-                  rh: 'rh :55.4%',
-                ),
-                SizedBox(height: 12),
-
-                _HistoryRow(
-                  date: 'Tue, 21 Jan',
-                  tmp: 'tmp : 25°c',
-                  hum: 'hum :87.4%',
-                  rh: 'rh :55.4%',
-                ),
-              ],
-            ),
-
-            Positioned(
-              top: -8,
-              right: -8,
-              child: GestureDetector(
-                onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (_) => const DataHistoryScreen()),
-                  // );
-                },
-                child: SizedBox(
-                  width: 36,
-                  height: 36,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: SvgPicture.asset(
-                      'assets/icons/arrowupright_icon.svg',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            Positioned(
-              right: 0,
-              bottom: 0,
-              child: Text(
-                'Januari 2025',
-                style: TextStyle(
-                  color: Colors.grey[800],
-                  fontSize: 12,
-                  fontFamily: 'Plus Jakarta Sans',
-                  fontWeight: FontWeight.w300,
-                  height: 1,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  final bool showExtraSection;
+  final bool showTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -343,113 +25,62 @@ class Realtimeconditions extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontFamily: 'Plus Jakarta Sans',
-              fontSize: 22,
-              fontWeight: FontWeight.w400,
-              height: 1,
-              color: Colors.black,
+          if (showTitle) ...[
+            Text(
+              title,
+              style: const TextStyle(
+                fontFamily: 'Plus Jakarta Sans',
+                fontSize: 22,
+                fontWeight: FontWeight.w400,
+                height: 1,
+                color: Colors.black,
+              ),
             ),
-          ),
-          const SizedBox(height: 12),
+            const SizedBox(height: 12),
+          ],
+
           Row(
-            children: [
+            children: const [
               Expanded(
-                child: _buildInfoCard(
-                  context,
+                child: InfoCard(
                   iconAsset: 'assets/icons/soilph_icon.png',
                   title: 'Soil pH',
                   value: '6.0',
                   description: 'Normal 6.0 - 7.5',
-                  gradientColors: [
-                    const Color(0xFF34C6EB),
-                    const Color(0xFF25A8D3),
-                  ],
+                  gradientColors: [Color(0xFF34C6EB), Color(0xFF25A8D3)],
                 ),
               ),
-              const SizedBox(width: 12),
+              SizedBox(width: 12),
               Expanded(
-                child: _buildInfoCard(
-                  context,
+                child: InfoCard(
                   iconAsset: 'assets/icons/humidity_icon.png',
                   title: 'Humidity',
                   value: '35%',
                   description: 'Lembab 20% - 30%',
-                  gradientColors: [
-                    const Color(0xFFFA9C6D),
-                    const Color(0xFFF77E4A),
-                  ],
+                  gradientColors: [Color(0xFFFA9C6D), Color(0xFFF77E4A)],
                 ),
               ),
             ],
           ),
+
           const SizedBox(height: 12),
-          _buildLargeInfoCard(
-            context,
+
+          const LargeInfoCard(
             iconAsset: 'assets/icons/soiltemp_icon.png',
             title: 'Soil Temperature',
             value: '12°C',
             description: 'Terlalu dingin, dengan suhu normal 15°C - 30°C.',
-            gradientColors: [const Color(0xFFAADF7F), const Color(0xFF7CCB5B)],
+            gradientColors: [Color(0xFFAADF7F), Color(0xFF7CCB5B)],
           ),
-          const SizedBox(height: 12),
-          _buildSensorStatusCard(context, w),
-          const SizedBox(height: 12),
 
-          _buildDataHistoryCard(context, w),
+          if (showExtraSection) ...[
+            const SizedBox(height: 12),
+            SensorStatusCard(width: w),
+            const SizedBox(height: 12),
+            DataHistoryCard(width: w),
+          ],
         ],
       ),
-    );
-  }
-}
-
-class _HistoryRow extends StatelessWidget {
-  final String date;
-  final String tmp;
-  final String hum;
-  final String rh;
-
-  const _HistoryRow({
-    required this.date,
-    required this.tmp,
-    required this.hum,
-    required this.rh,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    const dateStyle = TextStyle(
-      color: Colors.black,
-      fontSize: 12,
-      fontFamily: 'Plus Jakarta Sans',
-      fontWeight: FontWeight.w500,
-      height: 1.83,
-    );
-    const valStyle = TextStyle(
-      color: Colors.black,
-      fontSize: 12,
-      fontFamily: 'Plus Jakarta Sans',
-      fontWeight: FontWeight.w300,
-      height: 1.83,
-    );
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(date, style: dateStyle),
-        const SizedBox(height: 2),
-        Row(
-          children: [
-            Text(tmp, style: valStyle),
-            const SizedBox(width: 12),
-            Text(hum, style: valStyle),
-            const SizedBox(width: 12),
-            Text(rh, style: valStyle),
-          ],
-        ),
-      ],
     );
   }
 }
