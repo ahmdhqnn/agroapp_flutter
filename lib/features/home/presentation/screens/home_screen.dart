@@ -8,6 +8,7 @@ import '../widgets/weathercard_widget.dart';
 import '../widgets/plancard_widget.dart';
 import '../widgets/landconditions_widget.dart';
 import '../widgets/agroindicator_widgets.dart';
+import '../widgets/detail_monitoring.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -44,6 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
             _Centered(child: Realtimeconditions(widthFactor: 0.92)),
             SizedBox(height: 24),
+
+            _Centered(child: DetailMonitoring()),
+            SizedBox(height: 32),
 
             _Centered(child: LandConditions(widthFactor: 0.92)),
             SizedBox(height: 24),

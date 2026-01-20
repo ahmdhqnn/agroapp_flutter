@@ -30,7 +30,10 @@ class HeaderWidget extends StatelessWidget {
                   'assets/icons/profile_icon.svg',
                   width: 28,
                   height: 28,
-                  colorFilter: const ColorFilter.mode(Color(0xFF000000), BlendMode.srcIn),
+                  colorFilter: const ColorFilter.mode(
+                    Color(0xFF000000),
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
               const SizedBox(width: 12),
@@ -77,7 +80,10 @@ class HeaderWidget extends StatelessWidget {
               'assets/icons/envelope_icon.svg',
               width: 28,
               height: 28,
-              colorFilter: const ColorFilter.mode(Color(0xFF000000), BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(
+                Color(0xFF000000),
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ],
