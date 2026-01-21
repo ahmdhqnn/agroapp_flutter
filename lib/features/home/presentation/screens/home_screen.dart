@@ -46,9 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
             _Centered(child: Realtimeconditions(widthFactor: 0.92)),
             SizedBox(height: 24),
 
-            _Centered(child: DetailMonitoring()),
-            SizedBox(height: 32),
-
             _Centered(child: LandConditions(widthFactor: 0.92)),
             SizedBox(height: 24),
 

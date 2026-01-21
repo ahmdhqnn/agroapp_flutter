@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:agroappflutter/features/home/presentation/widgets/detail_monitoring.dart';
 import 'package:agroappflutter/features/home/presentation/widgets/monitoring_top_bar.dart';
 import 'package:agroappflutter/features/home/presentation/widgets/realtimeconditions_widget.dart';
+import 'package:agroappflutter/features/home/presentation/widgets/sensor_status_widget.dart';
+import 'package:agroappflutter/features/home/presentation/widgets/sensor_log_widget.dart';
 
 class MonitoringScreen extends StatelessWidget {
   const MonitoringScreen({super.key});
@@ -69,7 +71,46 @@ class MonitoringScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 32),
+              const SizedBox(height: 20),
+
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: contentWidth,
+                  child: const Text(
+                    'Sensor',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontFamily: 'Plus Jakarta Sans',
+                      fontWeight: FontWeight.w400,
+                      height: 1,
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: contentWidth,
+                  child: const SensorStatusCard(),
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: contentWidth,
+                  child: const SensorLogCard(),
+                ),
+              ),
+
+              const SizedBox(height: 40),
             ],
           ),
         ),
