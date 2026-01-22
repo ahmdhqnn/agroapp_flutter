@@ -4,6 +4,7 @@ import 'package:agroappflutter/features/home/presentation/widgets/monitoring_top
 import 'package:agroappflutter/features/home/presentation/widgets/realtimeconditions_widget.dart';
 import 'package:agroappflutter/features/home/presentation/widgets/sensor_status_widget.dart';
 import 'package:agroappflutter/features/home/presentation/widgets/sensor_log_widget.dart';
+import 'package:agroappflutter/features/home/presentation/widgets/sensor_history_widget.dart';
 
 class MonitoringScreen extends StatelessWidget {
   const MonitoringScreen({super.key});
@@ -107,6 +108,35 @@ class MonitoringScreen extends StatelessWidget {
                 child: SizedBox(
                   width: contentWidth,
                   child: const SensorLogCard(),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: contentWidth,
+                  child: const Text(
+                    'History',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontFamily: 'Plus Jakarta Sans',
+                      fontWeight: FontWeight.w400,
+                      height: 1,
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: contentWidth,
+                  child: const SensorHistoryCard(),
                 ),
               ),
 
