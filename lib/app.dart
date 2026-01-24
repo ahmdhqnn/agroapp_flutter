@@ -36,7 +36,7 @@ class _MainScaffoldState extends State<MainScaffold> {
     MonitoringScreen(),
     AgroIndicatorScreen(),
     ActionsScreen(),
-    SupportScreen(),
+    ForumScreen(),
   ];
 
   void _onItemTapped(int index) {
