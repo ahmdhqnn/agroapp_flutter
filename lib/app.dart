@@ -35,7 +35,7 @@ class _MainScaffoldState extends State<MainScaffold> {
     HomeScreen(),
     MonitoringScreen(),
     AgroIndicatorScreen(),
-    ActionsScreen(),
+    PlanScreen(),
     ForumScreen(),
   ];
 
