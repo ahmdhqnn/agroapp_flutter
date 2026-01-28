@@ -9,6 +9,7 @@ class PlanSectionCard extends StatelessWidget {
   final String subtitle;
   final Color background;
   final bool showAddButton;
+  final String trailingIcon;
 
   const PlanSectionCard({
     super.key,
@@ -16,6 +17,7 @@ class PlanSectionCard extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.background,
+    required this.trailingIcon,
     this.showAddButton = false,
   });
 
@@ -26,6 +28,7 @@ class PlanSectionCard extends StatelessWidget {
       subtitle: "To Do",
       background: Colors.white,
       showAddButton: true,
+      trailingIcon: 'assets/icons/task_icon.svg',
     );
   }
 
@@ -35,6 +38,7 @@ class PlanSectionCard extends StatelessWidget {
       title: "Plan Progress",
       subtitle: "In Progres",
       background: const Color(0xFFFBE588),
+      trailingIcon: 'assets/icons/task_icon.svg',
     );
   }
 
@@ -44,6 +48,7 @@ class PlanSectionCard extends StatelessWidget {
       title: "Plan Completed",
       subtitle: "Completed",
       background: const Color(0xFFFDDEC5),
+      trailingIcon: 'assets/icons/filter_icon.svg',
     );
   }
 
@@ -61,6 +66,7 @@ class PlanSectionCard extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,11 +92,7 @@ class PlanSectionCard extends StatelessWidget {
                   ),
                 ],
               ),
-              SvgPicture.asset(
-                'assets/icons/task_icon.svg',
-                width: 28,
-                height: 28,
-              ),
+              SvgPicture.asset(trailingIcon, width: 28, height: 28),
             ],
           ),
 
