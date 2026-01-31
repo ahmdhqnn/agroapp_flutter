@@ -8,7 +8,6 @@ import '../widgets/weathercard_widget.dart';
 import '../widgets/plancard_widget.dart';
 import '../widgets/landconditions_widget.dart';
 import '../widgets/agroindicator_widgets.dart';
-import '../widgets/detail_monitoring.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,8 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const bg = Color(0xFFF5F5F5);
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

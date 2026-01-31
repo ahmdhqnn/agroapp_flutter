@@ -116,8 +116,8 @@ class _SensorLogCardState extends State<SensorLogCard> {
                 setState(() => expanded = !expanded);
               },
               child: SizedBox(
-                width: 36,
-                height: 36,
+                width: 28,
+                height: 28,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: SvgPicture.asset(
