@@ -147,7 +147,7 @@ class _CustomBottomNav extends StatelessWidget {
                               ? SvgPicture.asset(
                                   isActive
                                       ? 'assets/icons/${base}filled.svg'
-                                      : 'assets/icons/${base}.svg',
+                                      : 'assets/icons/$base.svg',
                                   width: 28,
                                   height: 28,
                                   colorFilter: ColorFilter.mode(

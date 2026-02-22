@@ -1,3 +1,4 @@
+import 'package:agroappflutter/features/home/presentation/screens/field_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -14,6 +15,7 @@ class MonitoringTopBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            /// BACK BUTTON (TIDAK DIUBAH)
             InkWell(
               borderRadius: BorderRadius.circular(32),
               onTap: () => Navigator.of(context).maybePop(),
@@ -35,64 +37,74 @@ class MonitoringTopBar extends StatelessWidget {
             ),
 
             const SizedBox(width: 79),
-            Container(
-              width: 212,
-              height: 58,
-              padding: const EdgeInsets.symmetric(horizontal: 22),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 28,
-                    height: 28,
-                    child: SvgPicture.asset(
-                      'assets/icons/location_detail_icon.svg',
+
+            /// FIELD CAPSULE (DITAMBAHKAN NAVIGASI SAJA)
+            InkWell(
+              borderRadius: BorderRadius.circular(100),
+              onTap: () {
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (_) => const FieldScreen()));
+              },
+              child: Container(
+                width: 212,
+                height: 58,
+                padding: const EdgeInsets.symmetric(horizontal: 22),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
                       width: 28,
                       height: 28,
+                      child: SvgPicture.asset(
+                        'assets/icons/location_detail_icon.svg',
+                        width: 28,
+                        height: 28,
+                      ),
                     ),
-                  ),
 
-                  const SizedBox(width: 8),
+                    const SizedBox(width: 8),
 
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Field BTP Telkom',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 14,
-                            fontFamily: 'Plus Jakarta Sans',
-                            fontWeight: FontWeight.w600,
-                            height: 1.2,
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Field BTP Telkom',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontFamily: 'Plus Jakarta Sans',
+                              fontWeight: FontWeight.w600,
+                              height: 1.2,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 2),
-                        Text(
-                          '6°58\'10"S 107°37\'47"E | 318.4 m',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 9,
-                            fontFamily: 'Plus Jakarta Sans',
-                            fontWeight: FontWeight.w300,
-                            height: 1.1,
+                          SizedBox(height: 2),
+                          Text(
+                            '6°58\'10"S 107°37\'47"E | 318.4 m',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 9,
+                              fontFamily: 'Plus Jakarta Sans',
+                              fontWeight: FontWeight.w300,
+                              height: 1.1,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
