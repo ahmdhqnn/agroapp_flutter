@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:agroappflutter/features/home/presentation/screens/plant_overview_screen.dart';
+import 'package:agroappflutter/features/home/presentation/widgets/smart_score_gauge.dart';
 
 class SmartScoreSection extends StatelessWidget {
   const SmartScoreSection({
@@ -49,6 +50,7 @@ class SmartScoreSection extends StatelessWidget {
               colors: [Color(0xFFE1F3E2), Color(0xFFFDDEC5)],
             ),
           ),
+          child: const Center(child: SmartScoreGauge(score: 86)),
         ),
         const SizedBox(height: 12),
         Container(
