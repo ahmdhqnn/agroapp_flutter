@@ -100,7 +100,7 @@ flutter:
     - assets/icons/
 
   fonts:
-    - family: PlusJakartaSans
+    - family: Plus Jakarta Sans
       fonts:
         - asset: assets/fonts/PlusJakartaSans-ExtraLight.ttf
           weight: 200

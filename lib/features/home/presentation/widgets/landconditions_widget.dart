@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:agroappflutter/features/home/presentation/screens/field_screen.dart';
 
 class LandConditions extends StatelessWidget {
   const LandConditions({
@@ -52,7 +53,7 @@ class LandConditions extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Maps',
+                      'Field',
                       style: TextStyle(
                         fontFamily: 'Plus Jakarta Sans',
                         fontSize: 22,
@@ -81,7 +82,7 @@ class LandConditions extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
                               Text(
-                                'Field BTP Telkom',
+                                'Active',
                                 style: TextStyle(
                                   fontFamily: 'Plus Jakarta Sans',
                                   fontSize: 14,
@@ -145,7 +146,11 @@ class LandConditions extends StatelessWidget {
                     onTap:
                         onOpenMaps ??
                         () {
-                          // default empty
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const FieldScreen(),
+                            ),
+                          );
                         },
                     child: SizedBox(
                       width: 36,
@@ -216,46 +221,25 @@ class LandConditions extends StatelessWidget {
                       ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SizedBox(
-                            width: 36,
-                            height: 36,
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Icon(
-                                Icons.cloud_upload_outlined,
-                                color: const Color(0xFFB6B6B6),
-                                size: 24,
-                              ),
-                            ),
+                        children: const [
+                          Icon(
+                            Icons.cloud_upload_outlined,
+                            color: Color(0xFFB6B6B6),
+                            size: 24,
                           ),
-                          const SizedBox(height: 8),
-                          RichText(
+                          SizedBox(height: 8),
+                          Text(
+                            'Click to upload or drag and drop',
                             textAlign: TextAlign.center,
-                            text: const TextSpan(
-                              style: TextStyle(fontFamily: 'Plus Jakarta Sans'),
-                              children: [
-                                TextSpan(
-                                  text: 'Click to upload ',
-                                  style: TextStyle(
-                                    color: Color(0xFFB6B6B6),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: 'or drag and drop',
-                                  style: TextStyle(
-                                    color: Color(0xFFB6B6B6),
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
+                            style: TextStyle(
+                              fontFamily: 'Plus Jakarta Sans',
+                              color: Color(0xFFB6B6B6),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          const SizedBox(height: 6),
-                          const Text(
+                          SizedBox(height: 6),
+                          Text(
                             'SVG, PNG, JPG',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -275,11 +259,7 @@ class LandConditions extends StatelessWidget {
                   top: -8,
                   right: -8,
                   child: GestureDetector(
-                    onTap:
-                        onOpenAnalyzer ??
-                        () {
-                          // default empty
-                        },
+                    onTap: onOpenAnalyzer ?? () {},
                     child: SizedBox(
                       width: 36,
                       height: 36,
